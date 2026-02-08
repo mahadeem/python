@@ -1,6 +1,6 @@
 Installation file required from python library 
 
-#Server py installation
+#Server py installation to library
 
 socket
 ipaddress
@@ -19,7 +19,7 @@ struct
 random
 
 
-#Client py installation
+#Client py installation to library
 
 subprocess
 sys
