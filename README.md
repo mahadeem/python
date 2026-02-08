@@ -34,10 +34,12 @@ bs4
 
 
 Run commands
+
 1.
 To run Server file
 
 #  pyhton3 server.py
+
 2.
 To run client file
 
