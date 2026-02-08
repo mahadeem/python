@@ -7,7 +7,7 @@ ipaddress
 os
 io
 time
-tkinter import
+tkinter
 subprocess
 sys
 sqlite3
