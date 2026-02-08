@@ -21,12 +21,8 @@ random
 
 #Client py installation to library
 
-subprocess
-sys
-pickle
+
 json
-re
-threading
 random
 bs4
 
