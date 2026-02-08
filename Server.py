@@ -21,16 +21,6 @@ import random
 from bs4 import BeautifulSoup
 
 
-# # t = datetime.datetime.now() 
-# port = 65535
-# s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# s.bind((socket.gethostname(), 65535))
-# s.listen()
-# client, address = s.accept()
-# print("Binding socket to port: " + str(port))
-# print(f"Connection established {address[0]}'\n'{address[1]}")
-# print("connection has been established | " +"IP" + address[0] +  " | Port"  + str(address[1]))
-
 i = 0
 t = datetime.datetime.now() 
 v = "A"
@@ -40,7 +30,6 @@ j = "D"
 port = 9000
 window = Tk()
 s =socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# s.bind((socket.gethostname(), 65535))
 s.bind((socket.gethostname(), port))
 s.listen()
 client, address = s.accept()
@@ -50,19 +39,12 @@ kfrs = []
 def a():
     while True:
         try:
-            # for n in range(2):
+            
             print(f'Server is listening at .....\n')
-#             # print(f'Server is listening at {t}.....\n')
-#             # client, address = s.accept()
-#             # kfr = client.recv(1024)
             enCryp = client.recv(1024)
             print(enCryp)
-#             # time.sleep(4)
-#             # kfrs.append(kfr)
             kfrs.append(enCryp)
             clients.append(client)  
-#             # time.sleep(4)
-#             # print(f'Connected with {kfr} and ipaddess is {address} \n')
             print(f'Connected with {enCryp} and ipaddess is {address} \n')
             enCryp.close()
             j = threading.Thread(target=a)
@@ -83,7 +65,6 @@ def b():
                 for folders in range(5):
                     if not os.path.exists(olderP):
                         os.mkdir(olderP)
-                # cs = client.recv(204800)
                 cs = client.recv(408000)
                 anab ="{:%m%d%y%I%M%S}{}".format(t,v)
                 if not os.path.exists(anab):
