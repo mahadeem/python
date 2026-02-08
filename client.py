@@ -52,7 +52,7 @@ def b():
     while True:
         try:
             conn = sqlite3.connect('yourdbfile')
-            # conn = sqlite3.connect('History',detect_types=sqlite3.PARSE_DECLTYPES)
+            
             # conn = sqlite3.connect('SQLite_Python.db')
             # conn = sqlite3.connect('/Users/name/Library/Application Support/Google/Chrome/Default/yourdbfile')
             c = conn.cursor()
